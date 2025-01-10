@@ -1,0 +1,31 @@
+{
+  "name": "fewu-cli",
+  "version": "1.0.0",
+  "description": "Command line interface of fewu",
+  "homepage": "https://github.com/0xarch/fewu-cli#readme",
+  "bugs": {
+    "url": "https://github.com/0xarch/fewu-cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/0xarch/fewu-cli.git"
+  },
+  "license": "GPL-2.0-only",
+  "author": "soloev",
+  "type": "module",
+  "main": "src/index.mjs",
+  "bin": {
+    "fewu": "./src/index.mjs"
+  },
+  "scripts": {
+    "test": "node src/index.mjs"
+  },
+  "dependencies": {
+    "download-git-repo": "^3.0.2",
+    "fewu": "^3.3.0",
+    "moment": "^2.30.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5"
+  }
+}
