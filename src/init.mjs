@@ -7,7 +7,7 @@ import { value as packageJson } from './common/package.json.mjs';
 import download from 'download-git-repo';
 
 const app = ({
-    version: '2.1.0',
+    version: '2.1.1',
     name: 'io.fewu.initWorkspace'
 });
 
@@ -32,7 +32,7 @@ async function _remote() {
     console.log(`Downloading default theme: Next<${url}>`);
     return new Promise((resolve) => {
         download(url, 'themes/Next', undefined, (err) => {
-            safeWriteFile('./package.json',packageJson())
+            safeWriteFile('./package.json', packageJson())
             resolve();
             console.log(`Default theme setup complete. Run \`npm i\`(checkout package.json first) or \`npm i -S @fortawesome/free-brands-svg-icons @material-symbols/svg-400\` to download dependencies for default theme.`);
         });
@@ -54,7 +54,6 @@ export async function App() {
     console.info(`${app.name}, version ${app.version}`);
     await _local();
     await _remote();
-    console.log(``);
 }
 
 export default App;

@@ -1,20 +1,20 @@
 const app = ({
-    version: '1.0.0',
+    version: '1.0.1',
     name: 'io.fewu.help'
 });
 
-async function App() {
+export async function App() {
     console.info(`${app.name}, version ${app.version}`);
     let pad = 0
     let displays = {
-        '--new <path> <title> <--arguments-->': [
+        'new <path> <title> <--arguments-->': [
             `Touch a markdown file with basic information frame in the posts directory.`,
             `This argument will override all arguments.`],
 
         '     > --tag, -t': 'Make --new use specific tags. For multiple tags, use <space> to split.',
         '     > --category, -c': 'Make --new use specific category.',
 
-        '--init': [
+        'init': [
             `Setup environment.`,
             `This will make some directories and write some files.`,
             `This argument will override all arguments.`],

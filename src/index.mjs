@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 
-import App from 'fewu';
-
-async function navigation(){
-    let executing_task = App;
-    if(process.argv.includes('--new') || process.argv.includes('-n')){
-        executing_task = (await import("./new.mjs")).default;
-    } else if (process.argv.includes('--init')) {
-        executing_task = (await import("./init.mjs")).default;
-    } else if (process.argv.includes('--help') || process.argv.includes('-h')) {
-        executing_task = (await import("./help.mjs")).default;
+async function App() {
+    let executing_task;
+    const operationArg = process.argv[2];
+    if (operationArg === 'new') {
+        executing_task = (await import("./new.mjs")).App;
+    } else if (operationArg === 'init') {
+        executing_task = (await import("./init.mjs")).App;
+    } else if (process.argv.includes('--help')) {
+        executing_task = (await import("./help.mjs")).App;
+    } else {
+        executing_task = (await import("fewu")).App;
     }
-    executing_task();
+    await executing_task();
 }
 
-navigation();
+App();

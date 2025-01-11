@@ -2,47 +2,47 @@ import { writeFile, existsSync, statSync } from "fs";
 import Argv from "./lib/argv.mjs";
 import moment from "moment";
 
+
 const app = ({
-    version: '2.0.1',
+    version: '2.1.0',
     name: 'io.fewu.createNew'
 });
 
 export async function App() {
     console.info(`${app.name}, version ${app.version}`);
 
-    const title = (Argv['--new']).reverse()[0];
-    const file_location = (Argv['--new']).reverse()[1];
-    const tags = Array.from < string > (Argv['-t'] ?? []).concat(...Array.from < string > (Argv['--tag'] ?? []));
-    const categories = Array.from < string > (Argv['-c'] ?? []).concat(...Array.from < string > (Argv['--category'] ?? []));
+    let title, filePath, tags = [], categories = [];
 
-    const date = new Date();
+    title = (Argv['main']).reverse()[1] ?? 'Untitled';
+    filePath = (Argv['main']).reverse()[2];
+    tags = Array.from  (Argv['-t'] ?? []).concat(...Array.from  (Argv['--tag'] ?? []));
+    categories = Array.from  (Argv['-c'] ?? []).concat(...Array.from  (Argv['--category'] ?? []));
+
     const _moment = moment();
 
-    const y = date.getFullYear(),
-        m = date.getMonth() + 1,
-        d = date.getDate();
-
-    const m_p = m.toString().padStart(2, '0'),
-        d_p = d.toString().padStart(2, '0');
+    const m_p = _moment.format('MM'),
+        d_p = _moment.format('DD');
 
     let given_is_dir = false;
-    if (existsSync(file_location)) {
-        given_is_dir = statSync(file_location).isDirectory();
+    if (existsSync(filePath)) {
+        given_is_dir = statSync(filePath).isDirectory();
     }
 
-    let path = 'posts/';
-    if (!given_is_dir) path += file_location ?? `${title.toLowerCase().replace(/ /g, '-')}.${m_p}-${d_p}`;
-    else path += file_location + '/' + `${title.toLowerCase().replace(/ /g, '-')}.${m_p}-${d_p}`;
+    let path = 'source/posts/';
+    if (!given_is_dir) path += filePath ?? `${title.toLowerCase().replace(/ /g, '-')}.${m_p}-${d_p}`;
+    else path += filePath + '/' + `${title.toLowerCase().replace(/ /g, '-')}.${m_p}-${d_p}`;
 
-    if (existsSync(path)) {
-        let path_exist_jump = 0;
-        while (existsSync(path + path_exist_jump + '.md')) {
+    if (existsSync(path + '.md')) {
+        let path_exist_jump = 1;
+        while (existsSync(path + `(${path_exist_jump}).md`)) {
             path_exist_jump += 1;
         }
-        path = path.replace(/([\s\S]*)\.(.*?)$/, `$1_${path_exist_jump}.md`);
+        path += `(${path_exist_jump}).md`;
+    } else {
+        path += '.md';
     }
 
-    console.log(path);
+    console.log(`A markdown file will be created at ${path}`);
 
     const text = `---
 title: ${title}
@@ -51,11 +51,11 @@ tags: ${tags}
 category: ${categories}
 ---
 ¯\\_(ツ)_/¯
-Write some FOREWORDS here.
+Write some excerpt here.
 After the "more" tag is the content.
 <!--more-->`;
 
-    writeFile(path, text, {}, () => { });
+    await writeFile(path, text, {}, () => { });
 }
 
 export default App;
