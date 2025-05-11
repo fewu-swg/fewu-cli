@@ -10,7 +10,7 @@ async function App() {
     } else if (process.argv.includes('--help')) {
         executing_task = (await import("./help.mjs")).App;
     } else {
-        executing_task = (await import("fewu")).App;
+        executing_task = (await import("@fewu-swg/fewu")).App;
     }
     await executing_task();
 }
