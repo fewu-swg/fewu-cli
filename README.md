@@ -1,8 +1,8 @@
-# F.E.W.U. Command line interface
+# Fewu Command line interface
 
-A tool that makes using `fewu` more easier.
+This is a tool that makes using `fewu` more easier.
 
-The basic `fewu` _(>3.3.0)_ operations are only generating website and live server. This package is splited from `fewu` _(3.2.3)_ that support initialize, quickwrite and other operations not included in core `fewu`.
+The basic `fewu` _(>3.3.4)_ operations are only generating website and live server. This package is splited from `fewu` _(3.2.3)_ that support initialize, quickwrite and other operations not included in core `fewu`.
 
 ```sh
 npm i fewu-cli # Install package
