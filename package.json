@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@fewu-swg/fewu": "^3.4.14",
+    "@fewu-swg/fewu-renderer-markdown": "^1.2.2",
     "moment": "^2.30.1"
   },
   "devDependencies": {
