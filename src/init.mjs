@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { existsSync } from 'fs';
-import { writeFile, mkdir } from 'fs/promises';
+import { writeFile, mkdir, readFile } from 'fs/promises';
 import { value as config } from './common/config.yaml.mjs';
 import { guide_content, value as postTemplate } from './common/template.mjs';
 
@@ -24,7 +24,7 @@ async function _package_json(){
         dependencies: {}
     };
     if(existsSync(package_json_path)){
-        let current_package_json = JSON.parse((await readFile(package_json_path)).toStirng());
+        let current_package_json = JSON.parse((await readFile(package_json_path)).toString());
         target_package_json = current_package_json;
     }
     target_package_json.dependencies = {
