@@ -1,6 +1,6 @@
 {
   "name": "fewu-cli",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Command line interface of fewu.",
   "homepage": "https://github.com/fewu-swg/fewu-cli#readme",
   "bugs": {
