@@ -18,7 +18,7 @@ async function _package_json(){
     const dependencies = {
         "@fewu-swg/fewu-renderer-markdown": "^1.2.2",
         "@fewu-swg/fewu-theme-next": "^1.1.1",
-        "@fewu-swg/fewu-basic-improvements": "^1.0.0"
+        "@fewu-swg/fewu-plugin-basic-improvements": "^1.0.0"
     };
     const package_json_path = join(process.cwd(),"package.json");
     let target_package_json = {
