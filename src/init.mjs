@@ -49,8 +49,8 @@ async function _local() {
     ]);
     console.log(`Local initialization complete. Check source, public, themes folder and config.yaml.`);
     console.log(`You can clone other themes into themes/, make sure the required dependencies are installed.`);
-    console.log(`Run \`npm i\`(checkout package.json first) to ensure dependencies.`);
-    console.log(`Run \`npx fewu --server\` after \`npm i\` to see the initial website.`);
+    console.log(`Run \`pnpm i\`(checkout package.json first) to ensure dependencies.`);
+    console.log(`Run \`pnpm fewu --server\` after \`pnpm i\` to see the initial website.`);
 }
 
 export async function App() {
